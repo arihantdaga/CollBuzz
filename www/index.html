@@ -53,7 +53,13 @@
         </style>
 
 
-<script>
+
+
+    </head>
+    <body>
+
+
+    <script>
 
 
 var dataObj = {"records":[]};
@@ -162,6 +168,8 @@ return $.getJSON( "http://campusmartdemo.pythonanywhere.com/CollBuzz/default/api
   $.each(data, function(key,val){
     $.each(val,function(key,val){
     dataObj.records.push(val);
+
+
     
    //console.log(val);
    /* var orderrow = {
@@ -186,7 +194,9 @@ return $.getJSON( "http://campusmartdemo.pythonanywhere.com/CollBuzz/default/api
   console.log("page1 is now shown Now 2");
 //  var dataObj = {"records":[]};
 
-console.log(JSON.stringify(dataObj));
+console.log("haha:"+JSON.stringify(dataObj));
+
+    	$("html").append("Hello");
 
     $(".xtra").slideUp(0);
 
@@ -195,18 +205,8 @@ console.log(JSON.stringify(dataObj));
   });
 }));});
 
-
-
-
-
-
-
-
         </script>
 
-
-    </head>
-    <body>
         <div data-role="page" id="loginPage">
             <header>
                 <div data-role="header">
@@ -241,11 +241,6 @@ console.log(JSON.stringify(dataObj));
     padding-top: 18px;
 "><img src="img/logo.png" class="center-block" style="height:85%;"></nav>
         </footer>
-
-
-       
-
-
     </div>
 
 
