@@ -208,7 +208,7 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
 
  $(".xtra").slideUp(0);
 
- $(".orderrow").click(function(){
+ $(".orderrow").bind('click',function(){
  $(".xtra",this).slideToggle("fast");
   });
 }));
