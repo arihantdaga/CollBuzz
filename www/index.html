@@ -31,16 +31,22 @@
 
         <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css"> 
       
-         <script src="js/jquery/jquery-2.1.4.min.js"></script>
+         <script src="js/jquery/jquery.min.js"></script>
          <script src="js/jquery/jquery.mobile-1.3.2.min.js"></script>
-        <script src="js/appml.js"></script>
+         <script src="http://www.w3schools.com/appml/2.0.3/appml.js"></script>
         <link rel="stylesheet" href="js/jquery/jquery.mobile-1.4.5.min.css">    
  <script src="js/bootstrap/js/bootstrap.min.js"></script>
- <script type="text/javascript" src="js/cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+
 
         <title>Hello World</title>
-
+<script>
+$( document ).bind( "mobileinit", function() {
+    // Make your jQuery Mobile framework configuration changes here!
+    console.log("binded");
+    $.mobile.allowCrossDomainPages = true;
+    $.support.cors = true;
+});
+</script>
 
         <style>
         .addon{
@@ -51,18 +57,304 @@
   font-size: 16pt;
         }
         </style>
-
-
-
-
     </head>
     <body>
+        <div data-role="page" id="loginPage">
+            <header>
+                <div data-role="header">
+                
+              </div>
+            </header>
+        <div class="container-fluid" data-role="content">
+           <div class="row" style="margin-top:0px;">
+                <div class="col-md-6 col-md-offset-3 col-xs-12">
+                    <h1 style="text-align:center;">Login</h1>
+                    <hr>
+                    <form>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Employee ID" style="font-size: 18pt;height: 50px;background-color:#E4E9EC;" /> 
+                    <span class="input-group-addon addon"><span class="glyphicon glyphicon-user"></span></span>
+                </div>
+                <div class="input-group" style="margin-top:30px;">
+                    <input type="password" class="form-control" placeholder="Password" style="font-size: 18pt;height: 50px;background-color:#E4E9EC;" /> 
+                    <span class="input-group-addon addon"><span class="glyphicon glyphicon-lock"></span></span>
+                </div>
+              <a href="#page1" data-transition="slide" data-role="button" class="btn subbtn">GO</a>
+            </form>
+                </div>
+           </div>
+
+            
+        </div>
+
+        <footer data-role="footer">
+            <nav class="navbar-fixed-bottom nav1" style="
+    height: 100px;
+    padding-top: 18px;
+"><img src="img/logo.png" class="center-block" style="height:85%;"></nav>
+        </footer>
+
+
+       
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!--  Page one start -->
+    <div data-role="page" id="page1">
+
+            <div data-role="panel" id="myPanel"> 
+                <a href="#page1"><div class="row hr">Home</div></a>
+                <div class="row hh">Sort by</div>
+                <div class="row hr">Hostels</div>
+                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
+                
+                <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
+                <a href="#pageloc"><div class="row hr">Show all locations</div></a>
+                <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
+                
+                <div class="row hr">Logout</div>
+             </div>
+            <div  data-role="header">
+              
+                <div data-role="navbar">
+                    <ul>
+                      <li><a href="#myPanel">Hostels</a></li
+>                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
+                    </ul>
+                  </div>
+           
+            </div>
+        <div data-role="main"  class="ui-content"  id="jugad">
+           
+        </div>
+
+        <div data-role="footer">
+         
+        </div>
+     </div>
+
+    <!--  Page one end -->
+
+
+     <!--  Page resto start -->
+     <div data-role="page" id="pageresto">
+           <div data-role="panel" id="myPanel"> 
+                <a href="#page1"><div class="row hr">Home</div></a>
+                <div class="row hh">Sort by</div>
+                <div class="row hr">Hostels</div>
+                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
+                
+                <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
+                <a href="#pageloc"><div class="row hr">Show all locations</div></a>
+                <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
+                
+                <div class="row hr">Logout</div>
+             </div>
+            <div  data-role="header">
+              
+                <div data-role="navbar">
+                    <ul>
+                      <li><a href="#myPanel">Hostels</a></li>
+                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
+                    </ul>
+                  </div>
+           
+            </div>
+
+            <div data-role="main"  class="ui-content" id="restros">
+              <!--  <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
+                        Heritage Fresh
+                </div>
+                -->
+            </div>
+    </div>
+     <!--  Page resto end -->
+
+
+<!--  Page locations start -->
+     <div data-role="page" id="pageloc">
+           <div data-role="panel" id="myPanel"> 
+                 <a href="#page1"><div class="row hr">Home</div></a>
+                <div class="row hh">Sort by</div>
+                <div class="row hr">Hostels</div>
+                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
+                
+                <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
+                <a href="#pageloc"><div class="row hr">Show all locations</div></a>
+                <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
+                
+                <div class="row hr">Logout</div>
+             </div>
+            <div  data-role="header">
+              
+                <div data-role="navbar">
+                    <ul>
+                      <li><a href="#myPanel">Hostels</a></li>
+                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
+                    </ul>
+                  </div>
+           
+            </div>
+
+            <div data-role="main"  class="ui-content" id="locations">
+                <!--  <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
+                        Heritage Fresh
+                </div>
+                -->
+            </div>
+    </div>
+     <!--  Page locations end -->
+
+
+     <!--  Page resto start -->
+     <div data-role="page" id="pageslots">
+           <div data-role="panel" id="myPanel"> 
+              <a href="#page1"><div class="row hr">Home</div></a>
+                <div class="row hh">Sort by</div>
+                <div class="row hr">Hostels</div>
+                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
+                
+                <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
+                <a href="#pageloc"><div class="row hr">Show all locations</div></a>
+                <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
+                
+                <div class="row hr">Logout</div>
+             </div>
+            <div  data-role="header">
+              
+                <div data-role="navbar">
+                    <ul>
+                      <li><a href="#myPanel">Hostels</a></li>
+                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
+                    </ul>
+                  </div>
+           
+            </div>
+
+            <div data-role="main"  class="ui-content" id="time_slots">
+                 <!--  <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
+                        Heritage Fresh
+                </div>
+                -->
+            </div>
+    </div>
+     <!--  Page resto end -->
+
+
+
+
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    <script>
+$("#loginPage").live("pageinit", function(e) {
+checkPreAuth();
+});
+
+
+function init() {
+document.addEventListener("deviceready", deviceReady, true);
+delete init;
+}
+
+function checkPreAuth() {
+var form = $("#loginForm");
+if(window.localStorage["username"] != undefined && window.localStorage["password"] != undefined) {
+$("#username", form).val(window.localStorage["username"]);
+$("#password", form).val(window.localStorage["password"]);
+handleLogin();
+}
+}
+
+function handleLogin() {
+var form = $("#loginForm");
+//disable the button so we can't resubmit while we wait
+$("#submitButton",form).attr("disabled","disabled");
+var u = $("#username", form).val();
+var p = $("#password", form).val();
+console.log("click");
+if(u != '' && p!= '') {
+$.post("http://www.coldfusionjedi.com/demos/2011/nov/10/service.cfc?method=login&returnformat=json", {username:u,password:p}, function(res) {
+if(res == true) {
+//store
+window.localStorage["username"] = u;
+window.localStorage["password"] = p;
+$.mobile.changePage("some.html");
+} else {
+navigator.notification.alert("Your login failed", function() {});
+}
+$("#submitButton").removeAttr("disabled");
+},"json");
+} else {
+//Thanks Igor!
+navigator.notification.alert("You must enter a username and password", function() {});
+$("#submitButton").removeAttr("disabled");
+}
+return false;
+}
+
+function deviceReady() {
+
+$("#loginForm").on("submit",handleLogin);
+
+}
+
+
+
+
+
+function getJSONdata(){
+//http://campusmartdemo.pythonanywhere.com/CollBuzz/default/api/orders.json
+$.getJSON( "file:///E:/New%20folder/dev/phonegap/collbuzz/www/orders.js", function( data ) {
+  var items = [];
+ /* console.log(data);*/
+ 
+  $.each(data, function(key,val){
+    $.each(val,function(key,val){
+    
+//console.log(val);
+
+    dataObj.records.push(val);
+   console.log(val);
+   /* var orderrow = {
+        "orderID":val.orderID,"restaurent":val.restaurent,"price":val.price,"oDate":val.oDate,"item":val.item,"college":val.college
+    }*/
+//    console.log(orderrow);
+
+ //   dataObj.records.push(orderrow);
+});
+  console.log(JSON.stringify(dataObj));
+  });
+});
+
+
+}
+
+</script>
+
 
 
     <script>
 
 
 var dataObj = {"records":[]};
+var restros = {};
+var hostels = {};
+var time_slots = {};
+var statuses = {};
   
 $(document).ready(function(){
 console.log("ready");
@@ -159,7 +451,7 @@ $("#loginForm").on("submit",handleLogin);
 
 
 function getJSONdata(){
-	console.log('Now i am being executed (i am getJSONdata function )');
+    console.log('Now i am being executed (i am getJSONdata function )');
 //http://campusmartdemo.pythonanywhere.com/CollBuzz/default/api/orders.json
 return $.getJSON("http://campusmartdemo.pythonanywhere.com/CampusMart/default/api/orders.json", function( data ) {
   var items = [];
@@ -181,20 +473,21 @@ return $.getJSON("http://campusmartdemo.pythonanywhere.com/CampusMart/default/ap
 });
 }
 $(document).on("pageinit","#page1",function(){ // When entering pagetwo
-	
+    
 $.when(getJSONdata().done(function(){
   console.log("page1 is now shown Now 2");
 //  var dataObj = {"records":[]};
 
-/*
-$("#datass").html("<div data-role=\"main\"  class=\"ui-content\"  appml-data=\"dataObj\"><div class=\"orderrow\" style=\"margin-bottom:10px; background-color:whiteSmoke;\" appml-repeat=\"records\"><div class=\"row\"><div class=\"col-xs-1\">{{orderID}}</div><div class=\"col-xs-7\" style=\"padding-left: 49px;\"><strong>{{item}}</strong></div><div class=\"col-xs-3\">{{college}}</div></div><div class=\"row xtra\"><div class=\"col-xs-12\"><strong>Items: </strong>Biriyani(2), burgers, Daal Fry </div><div class=\"col-xs-6\"><font size=\"+1\"><strong>Rs. 530</strong></font></div><div class=\"col-xs-5 pull-right\"><div class=\"row\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red;\"></span>Delivered</div><div class=\"row\"><span class=\"glyphicon glyphicon-ok\" style=\"color:green;\"></span>Picked up</div></div></div></div></div>");
-*/
+
 
 $.each(dataObj.records,function(key,val){
 
 $("#jugad").append("<div class=\"orderrow\" style=\"margin-bottom:10px; background-color:whiteSmoke;\"><div class=\"row\"><div class=\"col-xs-1\">"+val.orderID+"</div><div class=\"col-xs-7\" style=\"padding-left: 49px;\"><strong>"+ val.item+"</strong></div><div class=\"col-xs-3\">"+val.college+"</div></div><div class=\"row xtra\"><div class=\"col-xs-12\"><strong>Items: </strong>Biriyani(2), burgers, Daal Fry </div><div class=\"col-xs-6\"><font size=\"+1\"><strong>Rs. 530</strong></font></div><div class=\"col-xs-5 pull-right\"><div class=\"row\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red;\"></span>Delivered</div><div class=\"row\"><span class=\"glyphicon glyphicon-ok\" style=\"color:green;\"></span>Picked up</div></div></div></div>");
-
-
+if(!restros[val.restaurant]){restros[val.restaurant] = true;$("#restros").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.restaurant+"</div>");}
+if(!hostels[val.college]){hostels[val.college] = true;$("#locations").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.college+"</div>");}
+if(!time_slots[val.EDT]){time_slots[val.EDT] = true;$("#time_slots").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.EDT+"</div>");}
+if(!statuses[val.status]){statuses[val.status] = true;$("#time_slots").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.status+"</div>");}
+console.log(val);
 
 /* 
 $("#jugad").append('<div>'+val.orderID+'</div>');
@@ -202,6 +495,10 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
 
 
 });
+console.log("Hello:"+restros);
+console.log(hostels);
+console.log(time_slots);
+console.log(statuses);
 
 
  $("html").append("Hello");
@@ -216,175 +513,5 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
 });
 
         </script>
-
-        <div data-role="page" id="loginPage">
-            <header>
-                <div data-role="header">
-                
-              </div>
-            </header>
-        <div class="container-fluid" data-role="content">
-           <div class="row" style="margin-top:0px;">
-                <div class="col-md-6 col-md-offset-3 col-xs-12">
-                    <h1 style="text-align:center;">Login</h1>
-                    <hr>
-                    <form>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Employee ID" style="font-size: 18pt;height: 50px;background-color:#E4E9EC;" /> 
-                    <span class="input-group-addon addon"><span class="glyphicon glyphicon-user"></span></span>
-                </div>
-                <div class="input-group" style="margin-top:30px;">
-                    <input type="password" class="form-control" placeholder="Password" style="font-size: 18pt;height: 50px;background-color:#E4E9EC;" /> 
-                    <span class="input-group-addon addon"><span class="glyphicon glyphicon-lock"></span></span>
-                </div>
-              <a href="#page1" data-transition="slide" data-role="button" class="btn subbtn">GO</a>
-            </form>
-                </div>
-           </div>
-
-            
-        </div>
-
-        <footer data-role="footer">
-            <nav class="navbar-fixed-bottom nav1" style="
-    height: 100px;
-    padding-top: 18px;
-"><img src="img/logo.png" class="center-block" style="height:85%;"></nav>
-        </footer>
-    </div>
-
-
-
-
-
-
-
-
-
-   <!--  Page one start -->
-    <div data-role="page" id="page1">
-
-            <div data-role="panel" id="myPanel"> 
-                <div class="row hh">Sort by</div>
-                <div class="row hr">Hostels</div>
-                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
-                
-                <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
-                <div class="row hr">Show all locations</div>
-                <div class="row hr" style="margin-bottom:10px;">Show all time slots</div>
-                
-                <div class="row hr">Logout</div>
-             </div>
-            <div  data-role="header">
-              
-                <div data-role="navbar">
-                    <ul>
-                      <li><a href="#myPanel">Hostels</a></li
->                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
-                    </ul>
-                  </div>
-           
-            </div>
-         <div data-role="main"  class="ui-content"  id="jugad">
-        
-	
-	</div>
-        <div data-role="footer">
-         
-        </div>
-     </div>
-
-    <!--  Page one end -->
-
-
-     <!--  Page resto start -->
-     <div data-role="page" id="pageresto">
-           <div data-role="panel" id="myPanel"> 
-                <div class="row hh">Sort by</div>
-                <div class="row hr">Hostels</div>
-                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
-                
-                <div class="row hr">Show all restaurants</div>
-                <div class="row hr">Show all locations</div>
-                <div class="row hr" style="margin-bottom:10px;">Show all time slots</div>
-                
-                <div class="row hr">Logout</div>
-             </div>
-            <div  data-role="header">
-              
-                <div data-role="navbar">
-                    <ul>
-                      <li><a href="#myPanel">Hostels</a></li>
-                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
-                    </ul>
-                  </div>
-           
-            </div>
-
-            <div data-role="main"  class="ui-content">
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Heritage Fresh
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Club 8
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Mainland China
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Dominoes
-                </div>
-            </div>
-    </div>
-     <!--  Page resto end -->
-
-
-     <!--  Page resto start -->
-     <div data-role="page" id="pageresto">
-           <div data-role="panel" id="myPanel"> 
-                <div class="row hh">Sort by</div>
-                <div class="row hr">Hostels</div>
-                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
-                
-                <div class="row hr">Show all restaurants</div>
-                <div class="row hr">Show all locations</div>
-                <div class="row hr" style="margin-bottom:10px;">Show all time slots</div>
-                
-                <div class="row hr">Logout</div>
-             </div>
-            <div  data-role="header">
-              
-                <div data-role="navbar">
-                    <ul>
-                      <li><a href="#myPanel">Hostels</a></li>
-                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
-                    </ul>
-                  </div>
-           
-            </div>
-
-            <div data-role="main"  class="ui-content">
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Heritage Fresh
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Club 8
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Mainland China
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Dominoes
-                </div>
-            </div>
-    </div>
-     <!--  Page resto end -->   
-     
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-
-
-        
     </body>
 </html>
