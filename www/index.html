@@ -145,6 +145,44 @@ $( document ).bind( "mobileinit", function() {
     <!--  Page one end -->
 
 
+
+    <!--  Page custom start -->
+    <div data-role="page" id="pagecustom">
+
+            <div data-role="panel" id="myPanel"> 
+                <a href="#page1"><div class="row hr">Home</div></a>
+                <div class="row hh">Sort by</div>
+                <div class="row hr">Hostels</div>
+                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
+                
+                <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
+                <a href="#pageloc"><div class="row hr">Show all locations</div></a>
+                <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
+                
+                <div class="row hr">Logout</div>
+             </div>
+            <div  data-role="header">
+              
+                <div data-role="navbar">
+                    <ul>
+                      <li><a href="#myPanel">Hostels</a></li
+>                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
+                    </ul>
+                  </div>
+           
+            </div>
+        <div data-role="main"  class="ui-content"  id="jugadcustom">
+           
+        </div>
+
+        <div data-role="footer">
+         
+        </div>
+     </div>
+
+    <!--  Page custom end -->
+
+
      <!--  Page resto start -->
      <div data-role="page" id="pageresto">
            <div data-role="panel" id="myPanel"> 
@@ -170,7 +208,7 @@ $( document ).bind( "mobileinit", function() {
            
             </div>
 
-            <div data-role="main"  class="ui-content" id="restros">
+            <div data-role="main"  class="ui-content filtered" id="restros">
               <!--  <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
                         Heritage Fresh
                 </div>
@@ -205,7 +243,7 @@ $( document ).bind( "mobileinit", function() {
            
             </div>
 
-            <div data-role="main"  class="ui-content" id="locations">
+            <div data-role="main"  class="ui-content filtered" id="locations">
                 <!--  <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
                         Heritage Fresh
                 </div>
@@ -240,7 +278,7 @@ $( document ).bind( "mobileinit", function() {
            
             </div>
 
-            <div data-role="main"  class="ui-content" id="time_slots">
+            <div data-role="main"  class="ui-content filtered" id="time_slots">
                  <!--  <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
                         Heritage Fresh
                 </div>
@@ -359,6 +397,9 @@ var statuses = {};
 $(document).ready(function(){
 console.log("ready");
 console.log($.support.cors);
+
+
+
 $.support.cors = true;
 console.log($.support.cors);
 console.log($.mobile.allowCrossDomainPages);
@@ -508,9 +549,53 @@ console.log(statuses);
  $(".orderrow").bind('click',function(){
  $(".xtra",this).slideToggle("fast");
   });
+
+$(".filtered div").bind('click', function(){
+
+    var val_fil = $(this).text();
+    var fil = $(this).parent().attr("id");
+    if(fil == "restros")fil = "restaurant";
+    else if(fil == "locations")fil = "college";
+    else if(fil == "time_slots")fil = "status";
+    console.log("Val:"+val_fil+",Fil:"+fil);
+   custompage(fil,val_fil);
+
+});
+
+
+function custompage(type, value){
+        $("#jugadcustom").html("");
+        $.each(dataObj.records,function(key,val){
+
+                if(val[type] == value){
+                    $("#jugadcustom").append("<div class=\"orderrow\" style=\"margin-bottom:10px; background-color:whiteSmoke;\"><div class=\"row\"><div class=\"col-xs-1\">"+val.orderID+"</div><div class=\"col-xs-7\" style=\"padding-left: 49px;\"><strong>"+ val.item+"</strong></div><div class=\"col-xs-3\">"+val.college+"</div></div><div class=\"row xtra\"><div class=\"col-xs-12\"><strong>Items: </strong>Biriyani(2), burgers, Daal Fry </div><div class=\"col-xs-6\"><font size=\"+1\"><strong>Rs. 530</strong></font></div><div class=\"col-xs-5 pull-right\"><div class=\"row\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red;\"></span>Delivered</div><div class=\"row\"><span class=\"glyphicon glyphicon-ok\" style=\"color:green;\"></span>Picked up</div></div></div></div>");
+
+                }
+        });
+        $(".xtra").slideUp(0);
+
+        $.mobile.changePage( "#pagecustom", { transition: "slideup"} );
+
+}
+
+
+
+
+
+
+
 }));
 
 });
+
+
+$(document).on("pageinit","#pagecustom",function(){
+$(".xtra").slideUp(0);
+ $(".orderrow").click(function(){
+ $(".xtra",this).slideToggle("fast");
+  });
+
+    });
 
         </script>
     </body>
