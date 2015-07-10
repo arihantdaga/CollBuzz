@@ -33,7 +33,7 @@
       
          <script src="js/jquery/jquery-2.1.4.min.js"></script>
          <script src="js/jquery/jquery.mobile-1.3.2.min.js"></script>
-        <script src="js/appml.js"></script>
+         <script src="http://www.w3schools.com/appml/2.0.3/appml.js"></script>
         <link rel="stylesheet" href="js/jquery/jquery.mobile-1.4.5.min.css">    
  <script src="js/bootstrap/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="js/cordova.js"></script>
@@ -53,13 +53,7 @@
         </style>
 
 
-
-
-    </head>
-    <body>
-
-
-    <script>
+<script>
 
 
 var dataObj = {"records":[]};
@@ -161,13 +155,14 @@ $("#loginForm").on("submit",handleLogin);
 function getJSONdata(){
 	console.log('Now i am being executed (i am getJSONdata function )');
 //http://campusmartdemo.pythonanywhere.com/CollBuzz/default/api/orders.json
-return $.getJSON("http://campusmartdemo.pythonanywhere.com/CampusMart/default/api/orders.json", function( data ) {
+return $.getJSON( "http://campusmartdemo.pythonanywhere.com/CollBuzz/default/api/orders.json", function( data ) {
   var items = [];
  /* console.log(data);*/
  
   $.each(data, function(key,val){
     $.each(val,function(key,val){
     dataObj.records.push(val);
+    
    //console.log(val);
    /* var orderrow = {
         "orderID":val.orderID,"restaurent":val.restaurent,"price":val.price,"oDate":val.oDate,"item":val.item,"college":val.college
@@ -177,46 +172,41 @@ return $.getJSON("http://campusmartdemo.pythonanywhere.com/CampusMart/default/ap
  //   dataObj.records.push(orderrow);
 });
   //console.log(JSON.stringify(dataObj));
+  });
 });
-});
+
+
 }
-$(document).on("pageinit","#page1",function(){ // When entering pagetwo
-	
-$.when(getJSONdata().done(function(){
+
+
+  $(document).on("pageinit","#page1",function(){ // When entering pagetwo
+
+
+ $.when(getJSONdata().done(function(){
   console.log("page1 is now shown Now 2");
 //  var dataObj = {"records":[]};
 
-/*
-$("#datass").html("<div data-role=\"main\"  class=\"ui-content\"  appml-data=\"dataObj\"><div class=\"orderrow\" style=\"margin-bottom:10px; background-color:whiteSmoke;\" appml-repeat=\"records\"><div class=\"row\"><div class=\"col-xs-1\">{{orderID}}</div><div class=\"col-xs-7\" style=\"padding-left: 49px;\"><strong>{{item}}</strong></div><div class=\"col-xs-3\">{{college}}</div></div><div class=\"row xtra\"><div class=\"col-xs-12\"><strong>Items: </strong>Biriyani(2), burgers, Daal Fry </div><div class=\"col-xs-6\"><font size=\"+1\"><strong>Rs. 530</strong></font></div><div class=\"col-xs-5 pull-right\"><div class=\"row\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red;\"></span>Delivered</div><div class=\"row\"><span class=\"glyphicon glyphicon-ok\" style=\"color:green;\"></span>Picked up</div></div></div></div></div>");
-*/
+console.log(JSON.stringify(dataObj));
 
-$.each(dataObj.records,function(key,val){
+    $(".xtra").slideUp(0);
 
-$("#jugad").append("<div class=\"row\"><div class=\"col-xs-1\">"+val.orderID+"</div><div class=\"col-xs-7\" style=\"padding-left: 49px;\"><strong>"+ val.item+"</strong></div><div class=\"col-xs-3\">"+val.college+"</div></div><div class=\"row xtra\"><div class=\"col-xs-12\"><strong>Items: </strong>Biriyani(2), burgers, Daal Fry </div><div class=\"col-xs-6\"><font size=\"+1\"><strong>Rs. 530</strong></font></div><div class=\"col-xs-5 pull-right\"><div class=\"row\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red;\"></span>Delivered</div><div class=\"row\"><span class=\"glyphicon glyphicon-ok\" style=\"color:green;\"></span>Picked up</div></div></div>");
-
-
-
-/* 
-$("#jugad").append('<div>'+val.orderID+'</div>');
-*/
-
-
-});
-
-
- $("html").append("Hello");
-
- $(".xtra").slideUp(0);
-
- $(".orderrow").click(function(){
- $(".xtra",this).slideToggle("fast");
+  $(".orderrow").click(function(){
+    $(".xtra",this).slideToggle("fast");
   });
-}));
+}));});
 
-});
+
+
+
+
+
+
 
         </script>
 
+
+    </head>
+    <body>
         <div data-role="page" id="loginPage">
             <header>
                 <div data-role="header">
@@ -251,6 +241,11 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
     padding-top: 18px;
 "><img src="img/logo.png" class="center-block" style="height:85%;"></nav>
         </footer>
+
+
+       
+
+
     </div>
 
 
@@ -261,7 +256,7 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
 
 
 
-   <!--  Page one start -->
+    <!--  Page one start -->
     <div data-role="page" id="page1">
 
             <div data-role="panel" id="myPanel"> 
@@ -285,10 +280,6 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
                   </div>
            
             </div>
-         <div data-role="main"  class="ui-content">
-         <div class="orderrow" style="margin-bottom:10px; background-color:whiteSmoke;" id="jugad">
-		                        
-<!--
         <div data-role="main"  class="ui-content"  appml-data="dataObj">
            <div class="orderrow" style="margin-bottom:10px; background-color:whiteSmoke;" appml-repeat="records">
                 <div class="row">
@@ -305,8 +296,6 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
                     </div>
                 </div>       
            </div>
--->
-           <!--
            <div class="orderrow" style="margin-bottom:10px; background-color:whiteSmoke;">
                 <div class="row">
                     <div class="col-xs-1">1234</div>
@@ -352,60 +341,15 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
                     </div>
                 </div>       
            </div>
-
-           -->
             
-   <!--     </div> -->
-		</div>
-		</div>
+        </div>
+
         <div data-role="footer">
          
         </div>
      </div>
 
     <!--  Page one end -->
-
-
-     <!--  Page resto start -->
-     <div data-role="page" id="pageresto">
-           <div data-role="panel" id="myPanel"> 
-                <div class="row hh">Sort by</div>
-                <div class="row hr">Hostels</div>
-                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
-                
-                <div class="row hr">Show all restaurants</div>
-                <div class="row hr">Show all locations</div>
-                <div class="row hr" style="margin-bottom:10px;">Show all time slots</div>
-                
-                <div class="row hr">Logout</div>
-             </div>
-            <div  data-role="header">
-              
-                <div data-role="navbar">
-                    <ul>
-                      <li><a href="#myPanel">Hostels</a></li>
-                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
-                    </ul>
-                  </div>
-           
-            </div>
-
-            <div data-role="main"  class="ui-content">
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Heritage Fresh
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Club 8
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Mainland China
-                </div>
-                <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
-                        Dominoes
-                </div>
-            </div>
-    </div>
-     <!--  Page resto end -->
 
 
      <!--  Page resto start -->
