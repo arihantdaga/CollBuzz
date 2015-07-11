@@ -596,6 +596,13 @@ $(".xtra").slideUp(0);
   });
 
     });
+function update_status(id,status)
+{
+	$.ajax({
+  type: "POST",
+  url:'http://campusmartdemo.pythonanywhere.com/CampusMart/default/check_Del_Boy_auth/orders/'+id+'/'+status,
+});
+}
 
         </script>
     </body>
