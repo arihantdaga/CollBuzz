@@ -120,7 +120,7 @@ $( document ).bind( "mobileinit", function() {
                 <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
                 <a href="#pageloc"><div class="row hr">Show all locations</div></a>
                 <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
-                
+                <a href="#pagestatus"><div class="row hr" style="margin-bottom:10px;">Show all status</div></a>
                 <div class="row hr">Logout</div>
              </div>
             <div  data-role="header">
@@ -158,7 +158,7 @@ $( document ).bind( "mobileinit", function() {
                 <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
                 <a href="#pageloc"><div class="row hr">Show all locations</div></a>
                 <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
-                
+                <a href="#pagestatus"><div class="row hr" style="margin-bottom:10px;">Show all status</div></a>
                 <div class="row hr">Logout</div>
              </div>
             <div  data-role="header">
@@ -194,7 +194,7 @@ $( document ).bind( "mobileinit", function() {
                 <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
                 <a href="#pageloc"><div class="row hr">Show all locations</div></a>
                 <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
-                
+                <a href="#pagestatus"><div class="row hr" style="margin-bottom:10px;">Show all status</div></a>
                 <div class="row hr">Logout</div>
              </div>
             <div  data-role="header">
@@ -229,7 +229,7 @@ $( document ).bind( "mobileinit", function() {
                 <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
                 <a href="#pageloc"><div class="row hr">Show all locations</div></a>
                 <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
-                
+                <a href="#pagestatus"><div class="row hr" style="margin-bottom:10px;">Show all status</div></a>
                 <div class="row hr">Logout</div>
              </div>
             <div  data-role="header">
@@ -264,6 +264,41 @@ $( document ).bind( "mobileinit", function() {
                 <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
                 <a href="#pageloc"><div class="row hr">Show all locations</div></a>
                 <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
+                <a href="#pagestatus"><div class="row hr" style="margin-bottom:10px;">Show all status</div></a>
+                <div class="row hr">Logout</div>
+             </div>
+            <div  data-role="header">
+              
+                <div data-role="navbar">
+                    <ul>
+                      <li><a href="#myPanel">Hostels</a></li>
+                      <li><a href="#anylink"  class="ui-btn ui-btn-inline">Campus</a></li>
+                    </ul>
+                  </div>
+           
+            </div>
+
+            <div data-role="main"  class="ui-content filtered" id="slots">
+                 <!--  <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
+                        Heritage Fresh
+                </div>
+                -->
+            </div>
+    </div>
+     <!--  Page resto end -->
+
+     <!--  Page resto start -->
+     <div data-role="page" id="pagestatus">
+           <div data-role="panel" id="myPanel"> 
+              <a href="#page1"><div class="row hr">Home</div></a>
+                <div class="row hh">Sort by</div>
+                <div class="row hr">Hostels</div>
+                <div class="row hr" style="margin-bottom:10px;">Restaurants</div>
+                
+                <a href="#pageresto"><div class="row hr">Show all restaurants</div></a>
+                <a href="#pageloc"><div class="row hr">Show all locations</div></a>
+                <a href="#pageslots"><div class="row hr" style="margin-bottom:10px;">Show all time slots</div></a>
+                <a href="#pagestatus"><div class="row hr" style="margin-bottom:10px;">Show all status</div></a>
                 
                 <div class="row hr">Logout</div>
              </div>
@@ -278,7 +313,7 @@ $( document ).bind( "mobileinit", function() {
            
             </div>
 
-            <div data-role="main"  class="ui-content filtered" id="time_slots">
+            <div data-role="main"  class="ui-content filtered" id="status">
                  <!--  <div class="row" style="margin-bottom:10px; background-color:whiteSmoke;">
                         Heritage Fresh
                 </div>
@@ -354,32 +389,8 @@ $("#loginForm").on("submit",handleLogin);
 
 
 
-function getJSONdata(){
-//http://campusmartdemo.pythonanywhere.com/CollBuzz/default/api/orders.json
-$.getJSON( "file:///E:/New%20folder/dev/phonegap/collbuzz/www/orders.js", function( data ) {
-  var items = [];
- /* console.log(data);*/
- 
-  $.each(data, function(key,val){
-    $.each(val,function(key,val){
-    
-//console.log(val);
-
-    dataObj.records.push(val);
-   console.log(val);
-   /* var orderrow = {
-        "orderID":val.orderID,"restaurent":val.restaurent,"price":val.price,"oDate":val.oDate,"item":val.item,"college":val.college
-    }*/
-//    console.log(orderrow);
-
- //   dataObj.records.push(orderrow);
-});
-  console.log(JSON.stringify(dataObj));
-  });
-});
 
 
-}
 
 </script>
 
@@ -391,7 +402,7 @@ $.getJSON( "file:///E:/New%20folder/dev/phonegap/collbuzz/www/orders.js", functi
 var dataObj = {"records":[]};
 var restros = {};
 var hostels = {};
-var time_slots = {};
+var slots = {};
 var statuses = {};
   
 $(document).ready(function(){
@@ -494,7 +505,7 @@ $("#loginForm").on("submit",handleLogin);
 function getJSONdata(){
     console.log('Now i am being executed (i am getJSONdata function )');
 //http://campusmartdemo.pythonanywhere.com/CollBuzz/default/api/orders.json
-return $.getJSON("http://campusmartdemo.pythonanywhere.com/CampusMart/default/api/orders.json", function( data ) {
+return $.getJSON("http://127.0.0.1:8000/CampusMart/default/api/orders.json", function( data ) {
   var items = [];
  /* console.log(data);*/
  
@@ -526,8 +537,8 @@ $.each(dataObj.records,function(key,val){
 $("#jugad").append("<div class=\"orderrow\" style=\"margin-bottom:10px; background-color:white\"><div class=\"row\"><div class=\"col-xs-2\">"+val.orderID+"</div><div class=\"col-xs-6\"><strong>"+ val.restaurant+"</strong></div><div class=\"col-xs-3\">"+val.college+"</div><div class=\"col-xs-1\">"+val.EDT+"</div></div><div class=\"row xtra\"><div class=\"col-xs-12\"><strong>Items: </strong>"+val.item+" </div><div class=\"col-xs-12\"><font size=\"+1\"><strong>Rs. "+val.price+"</strong></font></div><div class=\"col-xs-12\"><strong>Student:</strong>"+val.student+"</div><div class=\"col-xs-12\"><strong>Address:</strong>"+val.address+"</div><div class=\"col-xs-12\"> <strong>Mobile: </strong>9999999999</div><div class=\"col-xs-12\"><div class=\"row\"><button class=\"btn btn-warning\" onClick=\"update_status('"+val.orderID+"','Rest_Rej')\"><span class=\"glyphicon glyphicon-remove\"></span>Rest_Rej</button><button class=\"btn btn-primary\" onClick=\"update_status('"+val.orderID+"','pickedup')\"><span class=\"glyphicon glyphicon-ok\"></span>Picked up</button><button class=\"btn btn-success\" onClick=\"update_status('"+val.orderID+"','delivered')\"><span class=\"glyphicon glyphicon-ok\"></span>Delivered</button><button class=\"btn btn-danger\" onClick=\"update_status('"+val.orderID+"','rejected')\"><span class=\"glyphicon glyphicon-remove\"></span>Rejected</button></div><div class=\"row\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red;\"></span>Delivered</div></div></div></div>");
 if(!restros[val.restaurant]){restros[val.restaurant] = true;$("#restros").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.restaurant+"</div>");}
 if(!hostels[val.college]){hostels[val.college] = true;$("#locations").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.college+"</div>");}
-if(!time_slots[val.EDT]){time_slots[val.EDT] = true;$("#time_slots").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.EDT+"</div>");}
-if(!statuses[val.status]){statuses[val.status] = true;$("#time_slots").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.status+"</div>");}
+if(!slots[val.EDT]){slots[val.EDT] = true;$("#slots").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.EDT+"</div>");}
+if(!statuses[val.status]){statuses[val.status] = true;$("#status").append("<div class=\"row\" style=\"margin-bottom:10px; background-color:whiteSmoke;\">"+val.status+"</div>");}
 console.log(val);
 
 /* 
@@ -538,25 +549,25 @@ $("#jugad").append('<div>'+val.orderID+'</div>');
 });
 console.log("Hello:"+restros);
 console.log(hostels);
-console.log(time_slots);
+console.log(slots);
 console.log(statuses);
 
 
- $("html").append("Hello");
+$("html").append("Hello");
 
- $(".xtra").slideUp(0);
+$(".xtra").slideUp(0);
 
- $(".orderrow").bind('click',function(){
- $(".xtra",this).slideToggle("fast");
+$(".orderrow").bind('click',function(){
+$(".xtra",this).slideToggle("fast");
   });
-
 $(".filtered div").bind('click', function(){
 
     var val_fil = $(this).text();
     var fil = $(this).parent().attr("id");
     if(fil == "restros")fil = "restaurant";
     else if(fil == "locations")fil = "college";
-    else if(fil == "time_slots")fil = "status";
+    else if(fil == "status")fil = "status";
+    else if (fil=="slots")fil='slots';
     console.log("Val:"+val_fil+",Fil:"+fil);
    custompage(fil,val_fil);
 
@@ -565,23 +576,52 @@ $(".filtered div").bind('click', function(){
 
 function custompage(type, value){
         $("#jugadcustom").html("");
+        if (type=='college'){
         $.each(dataObj.records,function(key,val){
-
+        	
                 if(val[type] == value){
                       $("#jugadcustom").append("<div class=\"orderrow\" style=\"margin-bottom:10px; background-color:white;\"><div class=\"row\"><div class=\"col-xs-2\">"+val.orderID+"</div><div class=\"col-xs-4\" style=\"padding-left:px;\"><strong>"+ val.student+"</strong></div><div class=\"col-xs-4\"><span class=\"glyphicon glyphicon-earphone\"> </span> 9999999999</div></div><div class=\"row xtra\"><div class=\"col-xs-8\"><strong>Restaurant: </strong>"+val.restaurant+"</div><div class=\"col-xs-4\"><font size=\"+1\"><strong>Rs. 530</strong></font></div><div class=\"col-xs-12\">"+val.item+"</div><div class=\"col-xs-12\"><Strong>Address:</Strong>"+val.address+"</div><div class=\"col-xs-6 pull-right\"><button class=\"btn btn-danger\" onClick=\"update_status('"+val.orderID+"','rejected')\"><span class=\"glyphicon glyphicon-remove\"></span>Rejected</button><button class=\"btn btn-success\"onClick=\"update_status('"+val.orderID+"',delivered') \"><span class=\"glyphicon glyphicon-remove\"></span>Delivered</button></div></div></div></div>");
 
                 }
         });
+
+}
+if (type=='restaurant'){
+$.each(dataObj.records,function(key,val){
+        	
+                if(val[type] == value){
+                      $("#jugadcustom").append("<div class=\"orderrow\" style=\"margin-bottom:10px; background-color:white;\"><div class=\"row\"><div class=\"col-xs-2\">"+val.orderID+"</div><div class=\"col-xs-4\" style=\"padding-left:px;\"><strong>"+ val.price+"</strong></div><div class=\"col-xs-4\">"+val.EDT+"</div></div><div class=\"row xtra\"><div class=\"col-xs-8\"><strong>Restaurant: </strong>"+val.restaurant+"</div><div class=\"col-xs-4\"><font size=\"+1\"><strong>Rs. "+val.price+"</strong></font></div><div class=\"col-xs-12\">"+val.item+"</div><div class=\"col-xs-12\"><Strong>Address:</Strong>"+val.address+"</div><div class=\"col-xs-6 pull-right\"><button class=\"btn btn-danger\" onClick=\"update_status('"+val.orderID+"','Rest_rej')\"><span class=\"glyphicon glyphicon-remove\"></span>RestRej</button><button class=\"btn btn-success\"onClick=\"update_status('"+val.orderID+"',pickedup') \"><span class=\"glyphicon glyphicon-remove\"></span>PickedUp</button></div></div></div></div>");
+
+                }
+        });
+
+}
+if(type=='slots'){
+
+$.each(dataObj.records,function(key,val){
+        	
+                if(val['EDT'] == value){
+                      $("#jugadcustom").append("<div class=\"orderrow\" style=\"margin-bottom:10px; background-color:white;\"><div class=\"row\"><div class=\"col-xs-2\">"+val.orderID+"</div><div class=\"col-xs-4\" style=\"padding-left:px;\"><strong>"+ val.restaurant+"</strong></div><div class=\"col-xs-6\">"+val.address+"</div></div><div class=\"row xtra\"><div class=\"col-xs-8\"><strong>Restaurant: </strong>"+val.restaurant+"</div><div class=\"col-xs-4\"><font size=\"+1\"><strong>Rs. "+val.price+"</strong></font></div><div class=\"col-xs-12\">"+val.item+"</div><div class=\"col-xs-12\"> <strong>Student: </strong>"+val.student+"</div><div class=\"col-xs-12\"><Strong>Address:</Strong>"+val.address+"</div><div class=\"col-xs-6 pull-right\"><button class=\"btn btn-warning\" onClick=\"update_status('"+val.orderID+"','Rest_Rej')\"><span class=\"glyphicon glyphicon-remove\"></span>Rest_Rej</button><button class=\"btn btn-primary\" onClick=\"update_status('"+val.orderID+"','pickedup')\"><span class=\"glyphicon glyphicon-ok\"></span>Picked up</button><button class=\"btn btn-success\" onClick=\"update_status('"+val.orderID+"','delivered')\"><span class=\"glyphicon glyphicon-ok\"></span>Delivered</button><button class=\"btn btn-danger\" onClick=\"update_status('"+val.orderID+"','rejected')\"><span class=\"glyphicon glyphicon-remove\"></span>Rejected</button></div></div></div></div>");
+
+                }
+        });
+	
+}
+if (type=='status')
+{
+$.each(dataObj.records,function(key,val){
+        	
+                if(val['status'] == value){
+                      $("#jugadcustom").append("<div class=\"orderrow\" style=\"margin-bottom:10px; background-color:white;\"><div class=\"row\"><div class=\"col-xs-2\">"+val.orderID+"</div><div class=\"col-xs-4\" style=\"padding-left:px;\"><strong>"+ val.restaurant+"</strong></div><div class=\"col-xs-6\">"+val.address+"</div></div><div class=\"row xtra\"><div class=\"col-xs-8\"><strong>Restaurant: </strong>"+val.restaurant+"</div><div class=\"col-xs-4\"><font size=\"+1\"><strong>Rs. "+val.price+"</strong></font></div><div class=\"col-xs-12\">"+val.item+"</div><div class=\"col-xs-12\"> <strong>Student: </strong>"+val.student+"</div><div class=\"col-xs-12\"><Strong>Address:</Strong>"+val.address+"</div><div class=\"col-xs-6 pull-right\"><button class=\"btn btn-warning\" onClick=\"update_status('"+val.orderID+"','Rest_Rej')\"><span class=\"glyphicon glyphicon-remove\"></span>Rest_Rej</button><button class=\"btn btn-primary\" onClick=\"update_status('"+val.orderID+"','pickedup')\"><span class=\"glyphicon glyphicon-ok\"></span>Picked up</button><button class=\"btn btn-success\" onClick=\"update_status('"+val.orderID+"','delivered')\"><span class=\"glyphicon glyphicon-ok\"></span>Delivered</button><button class=\"btn btn-danger\" onClick=\"update_status('"+val.orderID+"','rejected')\"><span class=\"glyphicon glyphicon-remove\"></span>Rejected</button></div></div></div></div>");
+
+                }
+        });
+
+}
+
         $(".xtra").slideUp(0);
         $.mobile.changePage( "#pagecustom", { transition: "slideup"} );
 }
-
-
-
-
-
-
-
 }));
 
 });
@@ -598,7 +638,7 @@ function update_status(id,status)
 {
 	$.ajax({
   type: "POST",
-  url:'http://campusmartdemo.pythonanywhere.com/CampusMart/default/check_Del_Boy_auth/orders/'+id+'/'+status,
+  url:'http://127.0.0.1:8000/CampusMart/default/check_Del_Boy_auth/orders/'+id+'/'+status,
 });
 }
 
